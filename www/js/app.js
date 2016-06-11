@@ -5,9 +5,11 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.services'])
 
-app.run(function($ionicPlatform) {
+
+angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter.services'])
+
+.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -39,6 +41,25 @@ app.run(function($ionicPlatform) {
   })
 
   // Each tab has its own nav history stack:
+  .state('tab.welcome', {
+    url: '/welcome',
+    views: {
+      'tab-welcome': {
+        templateUrl: 'templates/tab-welcome.html',
+        controller: 'WelcomeCtrl'
+      }
+    }
+  })
+
+  .state('tab.contacts', {
+      url: '/contacts',
+      views: {
+        'tab-contacts': {
+          templateUrl: 'templates/tab-contacts.html',
+          controller: 'ContactsCtrl'
+        }
+      }
+    })
 
   .state('tab.dash', {
     url: '/dash',
@@ -50,30 +71,22 @@ app.run(function($ionicPlatform) {
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.sms', {
+    url: '/sms',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
+      'tab-sms': {
+        templateUrl: 'templates/tab-sms.html',
+        controller: 'SmsCtrl'
+      }
+    }
+  })
+
+  .state('tab.goodbye', {
+    url: '/goodbye',
+    views: {
+      'tab-goodbye': {
+        templateUrl: 'templates/tab-goodbye.html',
         controller: 'AccountCtrl'
       }
     }
@@ -83,3 +96,5 @@ app.run(function($ionicPlatform) {
   $urlRouterProvider.otherwise('/tab/dash');
 
 });
+
+
