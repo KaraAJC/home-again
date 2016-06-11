@@ -25,8 +25,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
   });
 })
 
-
-
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -54,24 +52,34 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
+  // .state('tab.chats', {
+  //     url: '/chats',
+  //     views: {
+  //       'tab-chats': {
+  //         templateUrl: 'templates/tab-chats.html',
+  //         controller: 'ChatsCtrl'
+  //       }
+  //     }
+  //   })
+  //   .state('tab.chat-detail', {
+  //     url: '/chats/:chatId',
+  //     views: {
+  //       'tab-chats': {
+  //         templateUrl: 'templates/chat-detail.html',
+  //         controller: 'ChatDetailCtrl'
+  //       }
+  //     }
+  //   })
+
+  .state('tab.sms', {
+    url: '/sms',
+    views: {
+      'tab-sms': {
+        templateUrl: 'templates/tab-sms.html',
+        controller: 'SmsCtrl'
       }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
+    }
+  })
 
   .state('tab.account', {
     url: '/account',
@@ -83,30 +91,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
     }
   });
 
-document.addEventListener("deviceready", function() {
- 
-  var options = {
-    replaceLineBreaks: false, // true to replace \n by a new line, false by default
-    android: {
-      intent: '' // send SMS with the native android SMS messaging
-        //intent: '' // send SMS without open any other app
-        //intent: 'INTENT' // send SMS inside a default SMS app
-    }
-  };
- 
-  $scope.sendSMS = function() {
- 
-    $cordovaSms
-      .send('0959052082', 'This is some dummy text', options)
-      .then(function() {
-        alert('Success');
-        // Success! SMS was sent
-      }, function(error) {
-        alert('Error');
-        // An error occurred
-      });
-  }
-});
 
 
   // if none of the above states are matched, use this as the fallback
