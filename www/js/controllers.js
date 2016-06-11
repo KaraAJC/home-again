@@ -2,25 +2,17 @@ angular.module('starter.controllers', ['ngCordova'])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('contactsCtrl', function($scope, $cordovaContacts, $ionicPlatform) {
-    $scope.findContactsBySearchTerm = function(searchTerm) {
-      $var opts = {
-        filter: searchTerm,
-        multiple: true,
-        fields: ['displayName', 'name'],
-        desiredFields: [id];
-      };
+.controller('ContactsCtrl', function($scope, $cordovaContacts, $ionicPlatform) {
+  $scope.getAllContacts = function() {
+    console.log("getting contacts");
+    $cordovaContacts.find().then(function(allContacts) {
+        $scope.contacts = allContacts;
+        console.log(JSON.stringify(allContacts));
+    });
+  };
 
-      if ($ionicPlatform.isAndroid()) {
-        opts.hasPhoneNumber = true;
-      };
+})
 
-      $cordovaContacts.find(opts).then(function(contactsFound) {
-        $scope.contacts = contactsFound;
-      };
-    )}
-
-  })
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
