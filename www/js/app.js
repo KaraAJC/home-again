@@ -5,7 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter.services'])
+
+
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,6 +24,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   });
 })
+
+
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -79,7 +83,35 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   });
 
+document.addEventListener("deviceready", function() {
+ 
+  var options = {
+    replaceLineBreaks: false, // true to replace \n by a new line, false by default
+    android: {
+      intent: '' // send SMS with the native android SMS messaging
+        //intent: '' // send SMS without open any other app
+        //intent: 'INTENT' // send SMS inside a default SMS app
+    }
+  };
+ 
+  $scope.sendSMS = function() {
+ 
+    $cordovaSms
+      .send('0959052082', 'This is some dummy text', options)
+      .then(function() {
+        alert('Success');
+        // Success! SMS was sent
+      }, function(error) {
+        alert('Error');
+        // An error occurred
+      });
+  }
+});
+
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
 
 });
+
+
