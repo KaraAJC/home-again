@@ -5,35 +5,29 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.controller
 .controller('WelcomeCtrl', function($scope) {})
 
 .controller('SmsCtrl', function($scope, $cordovaSms) {
-  $scope.sms = {
-      number: '0959052082',
-      message: 'I\'m Home!'
-    };
-
-    document.addEventListener("deviceready", function() {
+  $scope.sms={};
 
       var options = {
-        replaceLineBreaks: false, // true to replace \n by a new line, false by default
-        android: {
-          intent: '' // send SMS with the native android SMS messaging
-            //intent: '' // send SMS without open any other app
-            //intent: 'INTENT' // send SMS inside a default SMS app
-        }
-      };
+      replaceLineBreaks: false, // true to replace \n by a new line, false by default
+      android: {
+        intent: 'INTENT'  // send SMS with the default SMS app
+      //intent: ''        // send SMS without open any other app
+      }}
 
-      $scope.sendSMS = function() {
+  $scope.sendSMS=function(){
+    console.log($scope.sms.number);
+    console.log($scope.sms.message);
 
-        $cordovaSms
-          .send('0959052082', 'This is some dummy text', options)
+    $cordovaSms
+        .send($scope.sms.number, $scope.sms.message, options)
           .then(function() {
-            alert('Success');
-            // Success! SMS was sent
+              // Success! SMS was sent
+              console.log('Success');
           }, function(error) {
-            alert('Error');
-            // An error occurred
-          });
-      }
-    });
+          // An error occurred
+              console.log(error);
+        });//then
+  }//sendSms
 })
 
 
