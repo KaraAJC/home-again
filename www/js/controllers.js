@@ -2,6 +2,26 @@ angular.module('starter.controllers', ['ngCordova'])
 
 .controller('DashCtrl', function($scope) {})
 
+.controller('contactsCtrl', function($scope, $cordovaContacts, $ionicPlatform) {
+    $scope.findContactsBySearchTerm = function(searchTerm) {
+      $var opts = {
+        filter: searchTerm,
+        multiple: true,
+        fields: ['displayName', 'name'],
+        desiredFields: [id];
+      };
+
+      if ($ionicPlatform.isAndroid()) {
+        opts.hasPhoneNumber = true;
+      };
+
+      $cordovaContacts.find(opts).then(function(contactsFound) {
+        $scope.contacts = contactsFound;
+      };
+    )}
+
+  })
+
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
