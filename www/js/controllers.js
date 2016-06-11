@@ -4,7 +4,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.controller
 .controller('SMSController', function($scope, $cordovaSms) {
   $scope.sms = {
       number: '0959052082',
-      message: 'This is some dummy text'
+      message: 'I\'m Home!'
     };
 
     document.addEventListener("deviceready", function() {
