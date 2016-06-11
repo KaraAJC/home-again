@@ -1,6 +1,11 @@
-angular.module('starter.controllers', ['ngCordova'])
+angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.controllers', 'starter.services'])
 
-.controller('DashCtrl', function($scope) {})
+
+.controller('SMSController', function($scope, $cordovaSms) {
+})
+
+.controller('DashCtrl', function($scope) {  
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
@@ -26,3 +31,4 @@ angular.module('starter.controllers', ['ngCordova'])
     enableFriends: true
   };
 });
+
