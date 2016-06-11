@@ -49,6 +49,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  .state('tab.contacts', {
+      url: '/contacts',
+      views: {
+        'tab-contacts': {
+          templateUrl: 'templates/tab-contacts.html',
+          controller: 'ContactsCtrl'
+        }
+      }
+    })
+
   .state('tab.dash', {
     url: '/dash',
     views: {
@@ -60,15 +70,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
 
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
     .state('tab.chat-detail', {
       url: '/chats/:chatId',
       views: {
@@ -79,11 +80,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.goodbye', {
+    url: '/goodbye',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
+      'tab-goodbye': {
+        templateUrl: 'templates/tab-goodbye.html',
         controller: 'AccountCtrl'
       }
     }
