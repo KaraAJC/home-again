@@ -4,6 +4,8 @@ angular.module('starter.controllers', ['ngCordova'])
 
 .controller('ContactsCtrl', function($scope) {})
 
+.controller('SmsCtrl', function($scope) {})
+
 .controller('DashCtrl', function($scope) {})
 
 .controller('AccountCtrl', function($scope) {
